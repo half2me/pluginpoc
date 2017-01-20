@@ -5,14 +5,14 @@
 
 extern "C" {
 void* load();
-void unload(void*);
+void unload();
 }
 
 class MyPlugin : public Plugin {
 public:
     MyPlugin();
 
-    ~MyPlugin();
+    virtual ~MyPlugin();
 
     virtual void somefn();
 };

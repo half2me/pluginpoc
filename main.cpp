@@ -6,14 +6,14 @@ using namespace std;
 
 int main()
 {
-    void *myso = dlopen("/home/halftome/ClionProjects/untitled/cmake-build-debug/libpoc.so", RTLD_NOW | RTLD_GLOBAL);
+    void *myso = dlopen("/home/halftome/ClionProjects/untitled/cmake-build-debug/libpoc.so", RTLD_NOW);
     if (myso == nullptr) {
         cout << dlerror() << endl;
         exit(1);
     }
 
     auto load = (void *(*)()) dlsym(myso, "load");
-    auto unload = (void *(*)(void*)) dlsym(myso, "unload");
+    auto unload = (void *(*)()) dlsym(myso, "unload");
 
     if (load == nullptr || unload == nullptr) {
         cout << "plugin missing start-stop functions" << endl;
@@ -22,7 +22,7 @@ int main()
 
     auto plugin = (Plugin *) load();
     plugin->somefn();
-    unload((void*)plugin);
+    unload();
 
     dlclose(myso);
     return 0;

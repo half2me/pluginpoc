@@ -3,11 +3,14 @@
 
 using namespace std;
 
+MyPlugin* instance;
+
 void* load() {
-    return new MyPlugin();
+    instance = new MyPlugin();
+    return instance;
 }
 
-void unload(void* instance) {
+void unload() {
     delete instance;
 }
 

@@ -4,7 +4,6 @@
 
 class Plugin {
 public:
-    virtual ~Plugin() = 0;
     virtual void somefn() = 0;
 };
 
