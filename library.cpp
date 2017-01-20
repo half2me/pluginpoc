@@ -3,19 +3,14 @@
 
 using namespace std;
 
-MyPlugin *instance;
-
 void* load() {
-    //instance = new MyPlugin();
-    //return instance;
-    return 0;
+    return new MyPlugin();
 }
 
-void unload() {
-    //delete instance;
+void unload(void* instance) {
+    delete instance;
 }
 
-/**
 void MyPlugin::somefn() {
     cout << "MyPlugin::somefn()" << endl;
 }
@@ -27,4 +22,3 @@ MyPlugin::MyPlugin() {
 MyPlugin::~MyPlugin() {
     cout << "MyPlugin::destructor" << endl;
 }
-**/
