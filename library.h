@@ -5,7 +5,7 @@
 
 extern "C" {
 void* load();
-void unload(void* instance);
+void unload(void*);
 }
 
 class MyPlugin : public Plugin {
